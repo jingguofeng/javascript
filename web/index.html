@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	document.write("Hello World<br>");
+	document.write("Goodbye World");
+	
+	function check(){
+		window.alert(document.getElementById("my").value);
+	}
+	
+	function showDiv(elem){
+		var msglist = document.getElementById("you");
+		var show = msglist.options[ msglist.selectedIndex ].getAttribute("data-product");
+		//alert(show);
+		if(show == "usb"){
+		    document.getElementById('meme').style.display = "block";
+			//alert("show");
+		}else{
+			document.getElementById('meme').style.display = "none";
+			//alert("hide");
+		}
+	}
+	
+	function checkcss(elem){
+		//var display = getStyleById('meme', 'display');
+		//alert(display); //will print 'none' or 'block' or 'inline' etc
+		alert(elem.id);
+		alert(elem.getAttribute("data-name"));
+	}
+	
+	function getStyleById(id, name)
+	{
+	    var element = document.getElementById(id);
+	    return element.currentStyle ? element.currentStyle[name] : window.getComputedStyle ? window.getComputedStyle(element, null).getPropertyValue(name) : null;
+	}
+
+	function getStyleByName(name, style)
+	{
+	    var element = document.getElementsByName(name);
+	    return element.currentStyle ? element.currentStyle[style] : window.getComputedStyle ? window.getComputedStyle(element, null).getPropertyValue(style) : null;
+	}
+	
+</script>
+
+<style type="text/css">
+#meme{
+
+
+	border: 1px solid red;
+	width: 100px;
+	display: none;
+}
+</style>
+
+</head>
+<body>
+
+<div>
+	<form onsubmit="check()">
+		<input type="text" id="my" value="">
+		
+		<select id="you" data-product="return result(this)" onchange="showDiv()">
+			<option data-product="usb" value='usb'>show</option>
+			<option data-product="powerbank" value='powerbank' selected>hide</option>
+		</select>
+		
+		<div id="meme" data-name="bbb"><h1>I am here!</h1></div>
+		
+		<div id="test" data-ui="123">
+		
+		</div>
+<ul >
+  <li id="test1" data-animal-type="bird">Owl</li>
+  <li data-animal-type="fish">Salmon</li> 
+  <li data-animal-type="spider">Tarantula</li> 
+</ul>
+	
+		<input type="submit">
+	</form>
+	<br>
+	<input type="button" value="check" name="aaa" onclick="checkcss(document.getElementById('meme'))">
+</div>
+
+</body>
+</html>
